@@ -8,7 +8,7 @@
 // Thresholds
 // Tune these on your board if needed
 // -----------------------------
-const int MIC_THRESHOLD = 1800;          // microphone activity threshold
+const int MIC_THRESHOLD = 50;          // microphone activity threshold
 const int CLEAR_DARK_THRESHOLD = 80;     // clear channel below this => dark
 const float MOTION_THRESHOLD = 0.18;     // accel magnitude change threshold
 const int PROX_NEAR_THRESHOLD = 120;     // proximity above this => near
@@ -147,7 +147,7 @@ void loop() {
   int sound = (mic >= MIC_THRESHOLD) ? 1 : 0;
   int dark = (clearVal < CLEAR_DARK_THRESHOLD) ? 1 : 0;
   int moving = (motion >= MOTION_THRESHOLD) ? 1 : 0;
-  int near = (prox >= PROX_NEAR_THRESHOLD) ? 1 : 0;
+  int near = (prox >= PROX_NEAR_THRESHOLD) ? 0 : 1;
 
   // Final rule-based classification
   String finalLabel;
